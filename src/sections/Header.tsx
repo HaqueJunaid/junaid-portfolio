@@ -1,7 +1,8 @@
 "use client";
 import { FC } from "react";
 import Button from "@/components/Button";
-import Link from "next/link";
+import {motion, useAnimate} from "motion/react";
+import { useState, useEffect } from "react";
 
 /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 const navItems = [
@@ -29,6 +30,73 @@ const navItems = [
 
 const Header: FC = () => {
 
+  const [isOpen, setIsOpen] = useState(false);
+  const [topLineScope, topLineAnimate] = useAnimate();
+  const [bottomLineScope, bottomLineAnimate] = useAnimate();
+
+  useEffect(() => {
+    if(isOpen) {
+      topLineAnimate([
+        [
+          topLineScope.current,
+          {
+            translateY: 4
+          }
+        ],
+        [
+          topLineScope.current,
+          {
+            rotate: 45
+          }
+        ]
+      ])
+      bottomLineAnimate([
+        [
+          bottomLineScope.current,
+          {
+            translateY: -4
+          }
+        ],
+        [
+          bottomLineScope.current,
+          {
+            rotate: -45
+          }
+        ]
+      ])
+    }else {
+      topLineAnimate([
+        [
+          topLineScope.current,
+          {
+            rotate: 0
+          }
+        ],
+        [
+          topLineScope.current,
+          {
+            translateY: 0
+          }
+        ]
+      ])
+      bottomLineAnimate([
+        [
+          bottomLineScope.current,
+          {
+            rotate: 0
+          }
+        ],
+        [
+          bottomLineScope.current,
+          {
+             translateY: 0
+          }
+        ]
+      ])
+    }
+  }, [isOpen, topLineScope, bottomLineScope, topLineAnimate, bottomLineAnimate])
+  
+
   return (
     <header>
       <div className="fixed top-0 left-0 w-full backdrop-blur-md mix-blend-difference text-white">
@@ -50,6 +118,7 @@ const Header: FC = () => {
             <div className="flex items-center justify-center gap-4">
               <div
                 className="size-11 border border-stone-400 bg-stone-200 rounded-full inline-flex items-center justify-center"
+                onClick={() => setIsOpen(!isOpen)}
               >
                 <svg
                   width="24"
@@ -58,7 +127,12 @@ const Header: FC = () => {
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <rect
+                  <motion.rect
+                    initial={{
+                      translateY: 0,
+                      rotate: 0
+                    }}
+                    ref={topLineScope}
                     x="3"
                     y="7"
                     width="18"
@@ -69,7 +143,12 @@ const Header: FC = () => {
                       // transform: "translateY(4px) rotate(45deg)"
                     }}
                   />
-                  <rect
+                  <motion.rect
+                  initial={{
+                      translateY: 0,
+                      rotate: 0
+                    }}
+                    ref={bottomLineScope}
                     x="3"
                     y="15"
                     width="18"
