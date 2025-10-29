@@ -1,6 +1,7 @@
 "use client";
 import { FC } from "react";
 import Button from "@/components/Button";
+import Link from "next/link";
 
 /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 const navItems = [
@@ -81,9 +82,11 @@ const Header: FC = () => {
                   />
                 </svg>
               </div>
-              <Button varient="primary" className="hidden md:inline-flex">
-                Contact Me
-              </Button>
+              <a href="/resume.pdf" download>
+                <Button varient="primary" className="hidden md:inline-flex">
+                  Download CV
+                </Button>
+              </a>
             </div>
           </div>
         </div>
