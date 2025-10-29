@@ -11,7 +11,7 @@ const Links = [
     link: "#",
   },
   {
-    title: "Tesimonals",
+    title: "testimonials",
     link: "#",
   },
   {
@@ -33,7 +33,7 @@ const Footer: FC = () => {
             <div className="md:col-span-3">
               <h4 className="flex items-center gap-2 md:text-lg lg:text-xl">
                 <div className="size-3 rounded-full bg-green-400 md:size-4"></div>
-                <span>One Spot avialable for next month</span>
+                <span>One Spot available for next month</span>
               </h4>
               <h2 className="mt-8 md:mt-10 lg:mt-14 text-4xl md:text-5xl lg:text-8xl xl:text-9xl">
                 Enough talk. Let&apos;s make something great together.
@@ -61,10 +61,10 @@ const Footer: FC = () => {
                 junaid@gmail.com
               </Button>
             </div>
-            <div className="md:col-span-2 mt-12 md:mt-0 md:justify-center flex flex-col md:items-end gap-5 lg:gap-10 xl:gap-14">
+            <div className="md:col-span-2 mt-12 md:mt-0 md:justify-center flex flex-col md:items-end gap-5 lg:gap-6 xl:gap-8">
               {Links.map(({ title, link }) => (
                 <a href={link} key={title}>
-                  <Button className="text-xl lg:text-4xl" varient="text">
+                  <Button className="text-xl lg:text-2xl" varient="text">
                     {title}
                   </Button>
                 </a>

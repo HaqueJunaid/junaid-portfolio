@@ -44,7 +44,7 @@ const Hero: FC = () => {
         </div>
         <div className="md:col-span-5">
           <div className="mt-20 md:mt-0 md:h-full xl:h-screen">
-            <Image src={heroImage} alt="My Image" className="size-full object-cover"/>
+            <Image src={heroImage} alt="My Image" priority className="size-full object-cover"/>
           </div>
         </div>
       </div>
