@@ -1,7 +1,7 @@
 "use client";
 import { FC } from "react";
 import Button from "@/components/Button";
-import {motion, useAnimate} from "motion/react";
+import { motion, useAnimate } from "motion/react";
 import { useState, useEffect } from "react";
 
 /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
@@ -29,76 +29,112 @@ const navItems = [
 ];
 
 const Header: FC = () => {
-
   const [isOpen, setIsOpen] = useState(false);
   const [topLineScope, topLineAnimate] = useAnimate();
   const [bottomLineScope, bottomLineAnimate] = useAnimate();
+  const [navScope, navAnimate] = useAnimate();
 
   useEffect(() => {
-    if(isOpen) {
+    if (isOpen) {
       topLineAnimate([
         [
           topLineScope.current,
           {
-            translateY: 4
-          }
+            translateY: 4,
+          },
         ],
         [
           topLineScope.current,
           {
-            rotate: 45
-          }
-        ]
-      ])
+            rotate: 45,
+          },
+        ],
+      ]);
       bottomLineAnimate([
         [
           bottomLineScope.current,
           {
-            translateY: -4
-          }
+            translateY: -4,
+          },
         ],
         [
           bottomLineScope.current,
           {
-            rotate: -45
-          }
-        ]
-      ])
-    }else {
+            rotate: -45,
+          },
+        ],
+      ]);
+    } else {
       topLineAnimate([
         [
           topLineScope.current,
           {
-            rotate: 0
-          }
+            rotate: 0,
+          },
         ],
         [
           topLineScope.current,
           {
-            translateY: 0
-          }
-        ]
-      ])
+            translateY: 0,
+          },
+        ],
+      ]);
       bottomLineAnimate([
         [
           bottomLineScope.current,
           {
-            rotate: 0
-          }
+            rotate: 0,
+          },
         ],
         [
           bottomLineScope.current,
           {
-             translateY: 0
-          }
-        ]
-      ])
+            translateY: 0,
+          },
+        ],
+      ]);
     }
-  }, [isOpen, topLineScope, bottomLineScope, topLineAnimate, bottomLineAnimate])
-  
+  }, [
+    isOpen,
+    topLineScope,
+    bottomLineScope,
+    topLineAnimate,
+    bottomLineAnimate,,
+    navScope,
+    navAnimate
+  ]);
 
   return (
     <header>
+      <div
+        ref={navScope}
+        className={`fixed top-0 left-0 w-full ${isOpen ? "h-screen pointer-events-auto" : "h-0 pointer-events-none"} overflow-hidden bg-stone-950 transition-all duration-300`}
+        aria-hidden={!isOpen}
+      >
+        <nav className="relative mt-20 flex flex-col">
+            {navItems.map(({ label, href }) => (
+              <a key={label + href} href={href} className="!max-w-full text-stone-200">
+                <div className="container flex justify-between items-center py-6 md:py-8 lg:py-10 xl:py-12 !max-w-full  border-b border-stone-800">
+                  <span className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl">{label}</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    className="size-5 md:size-6 lg:size-7"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
+                    />
+                  </svg>
+                </div>
+              </a>
+            ))}
+        </nav>
+      </div>
       <div className="fixed top-0 left-0 w-full backdrop-blur-md mix-blend-difference text-white">
         <div className="container !max-w-full">
           <div className="flex justify-between items-center h-20 ">
@@ -130,7 +166,7 @@ const Header: FC = () => {
                   <motion.rect
                     initial={{
                       translateY: 0,
-                      rotate: 0
+                      rotate: 0,
                     }}
                     ref={topLineScope}
                     x="3"
@@ -144,9 +180,9 @@ const Header: FC = () => {
                     }}
                   />
                   <motion.rect
-                  initial={{
+                    initial={{
                       translateY: 0,
-                      rotate: 0
+                      rotate: 0,
                     }}
                     ref={bottomLineScope}
                     x="3"
