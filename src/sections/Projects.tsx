@@ -1,32 +1,28 @@
 import { FC } from "react";
-import image1 from "@/assets/images/project-1.jpg";
-import image2 from "@/assets/images/project-2.jpg";
-import image3 from "@/assets/images/project-3.jpg";
-import image4 from "@/assets/images/project-4.jpg";
-import image5 from "@/assets/images/project-5.jpg";
+import placeholder from "@/assets/images/gato-papu.gif";
 import Image from "next/image";
 
 /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 const projects = [
   {
-    name: "Artisan Brew Co.",
-    image: image1,
+    name: "Yet to select",
+    image: placeholder,
   },
   {
-    name: "Wavelength Studios",
-    image: image2,
+    name: "Yet to select",
+    image: placeholder,
   },
   {
-    name: "Nova Fitness",
-    image: image3,
+    name: "Yet to select",
+    image: placeholder,
   },
   {
-    name: "Urban Plates",
-    image: image4,
+    name: "Yet to select",
+    image: placeholder,
   },
   {
-    name: "Bloom Botanicals",
-    image: image5,
+    name: "Yet to select",
+    image: placeholder,
   },
 ];
 

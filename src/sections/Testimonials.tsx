@@ -1,7 +1,5 @@
 import { FC } from "react";
-import image1 from "@/assets/images/testimonial-1.jpg";
-import image2 from "@/assets/images/testimonial-2.jpg";
-import image3 from "@/assets/images/testimonial-3.jpg";
+import placeholder from "@/assets/images/cat-cat-meme.gif";
 import Image from "next/image";
 
 /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
@@ -12,7 +10,7 @@ const testimonials = [
     role: "Head of Design",
     quote:
       "Alex's expertise in both technical development and design created a beautiful, high-performing website.",
-    image: image1,
+    image: placeholder,
     imagePositionY: 0.2,
   },
   {
@@ -21,7 +19,7 @@ const testimonials = [
     role: "Founder",
     quote:
       "Alex transformed our boutique coffee brand with a website that perfectly balances aesthetics and functionality.",
-    image: image2,
+    image: placeholder,
     imagePositionY: 0.1,
   },
   {
@@ -30,7 +28,7 @@ const testimonials = [
     role: "Creative Director",
     quote:
       "The collaborative process was amazing. Alex brought lots of fresh perspectives and innovative solutions.",
-    image: image3,
+    image: placeholder,
     imagePositionY: 0.55,
   },
 ];

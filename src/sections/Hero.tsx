@@ -18,6 +18,7 @@ const Hero: FC = () => {
             </h1>
             <div className="flex flex-col md:flex-row md:items-center items-start mt-10 gap-6">
               <Button
+              className="hidden md:inline-flex"
                 varient="secondary"
                 iconAfter={
                   <svg
@@ -38,7 +39,26 @@ const Hero: FC = () => {
               >
                 View my work
               </Button>
-              <Button varient="text">Let&apos;s Talk</Button>
+              <a href="/resume.pdf" download>
+                <Button varient="primary" className="inline-flex md:hidden">
+                  Download CV
+                </Button>
+              </a>
+              <Button className="inline-flex md:hidden" varient="text" iconAfter={<svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    className="size-5"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="m4.5 5.25 7.5 7.5 7.5-7.5m-15 6 7.5 7.5 7.5-7.5"
+                    />
+                  </svg>}>Let&apos;s Talk</Button>
+              <Button className="hidden md:inline-flex" varient="text">Let&apos;s Talk</Button>
             </div>
           </div>
         </div>

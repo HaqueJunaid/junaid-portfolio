@@ -108,7 +108,7 @@ const Header: FC = () => {
     <header>
       <div
         ref={navScope}
-        className={`fixed top-0 left-0 w-full ${isOpen ? "h-screen pointer-events-auto" : "h-0 pointer-events-none"} overflow-hidden bg-stone-950 transition-all duration-300`}
+        className={`fixed top-0 left-0 w-full ${isOpen ? "h-screen pointer-events-auto" : "h-0 pointer-events-none"} duration overflow-hidden bg-stone-950 transition-all duration-300`}
         aria-hidden={!isOpen}
       >
         <nav className="relative mt-20 flex flex-col">
