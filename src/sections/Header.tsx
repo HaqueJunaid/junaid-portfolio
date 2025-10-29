@@ -113,9 +113,10 @@ const Header: FC = () => {
       >
         <nav className="relative mt-20 flex flex-col">
             {navItems.map(({ label, href }) => (
-              <a key={label + href} href={href} className="!max-w-full text-stone-200">
-                <div className="container flex justify-between items-center py-6 md:py-8 lg:py-10 xl:py-12 !max-w-full  border-b border-stone-800">
-                  <span className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl">{label}</span>
+              <a key={label + href} href={href} className="!max-w-full text-stone-200 group/link-item relative" onClick={() => setIsOpen(false)}>
+                <div className="absolute w-full h-0 bg-stone-800 group-hover/link-item:h-full -z-100 transition-all duration-300 bottom-0"></div>
+                <div className="container relative flex justify-between items-center py-6 md:py-8 lg:py-10 xl:py-12 !max-w-full  border-b border-stone-800">
+                  <span className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl group-hover/link-item:pl-4 md:group-hover/link-item:pl-12 transition-all duration-300">{label}</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"

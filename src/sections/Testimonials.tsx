@@ -5,11 +5,11 @@ import Image from "next/image";
 /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 const testimonials = [
   {
-    name: "Sarah Chen",
-    company: "Pixel Perfect",
-    role: "Head of Design",
+    name: "Mr Boots",
+    company: "Private Cats Co.",
+    role: "Head of Trend",
     quote:
-      "Alex's expertise in both technical development and design created a beautiful, high-performing website.",
+      "Started my day with coffee and ended it with a Lambo. Guess caffeine does lead to speed 🚗💨.",
     image: placeholder,
     imagePositionY: 0.2,
   },
@@ -18,7 +18,7 @@ const testimonials = [
     company: "Craft Coffee Co.",
     role: "Founder",
     quote:
-      "Alex transformed our boutique coffee brand with a website that perfectly balances aesthetics and functionality.",
+      "Started my day with coffee and ended it with a Lambo. Guess caffeine does lead to speed 🚗💨.",
     image: placeholder,
     imagePositionY: 0.1,
   },
@@ -27,7 +27,7 @@ const testimonials = [
     company: "Studio Minimal",
     role: "Creative Director",
     quote:
-      "The collaborative process was amazing. Alex brought lots of fresh perspectives and innovative solutions.",
+      "Started my day with coffee and ended it with a Lambo. Guess caffeine does lead to speed 🚗💨.",
     image: placeholder,
     imagePositionY: 0.55,
   },
