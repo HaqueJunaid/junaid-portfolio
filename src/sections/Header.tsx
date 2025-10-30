@@ -99,22 +99,22 @@ const Header: FC = () => {
     topLineScope,
     bottomLineScope,
     topLineAnimate,
-    bottomLineAnimate,,
+    bottomLineAnimate,
     navScope,
-    navAnimate
+    navAnimate,
   ]);
 
   return (
     <header>
       <div
         ref={navScope}
-        className={`fixed top-0 left-0 w-full ${isOpen ? "h-screen pointer-events-auto" : "h-0 pointer-events-none"} duration overflow-hidden bg-stone-950 transition-all duration-300`}
+        className={`fixed top-0 left-0 w-full z-50 ${isOpen ? "h-screen pointer-events-auto" : "h-0 pointer-events-none"} duration overflow-hidden bg-stone-950 transition-all duration-300`}
         aria-hidden={!isOpen}
       >
         <nav className="relative mt-20 flex flex-col">
             {navItems.map(({ label, href }) => (
               <a key={label + href} href={href} className="!max-w-full text-stone-200 group/link-item relative" onClick={() => setIsOpen(false)}>
-                <div className="absolute w-full h-0 bg-stone-800 group-hover/link-item:h-full -z-100 transition-all duration-300 bottom-0"></div>
+                <div className="absolute w-full h-0 bg-stone-800 group-hover/link-item:h-full z-0 transition-all duration-300 bottom-0"></div>
                 <div className="container relative flex justify-between items-center py-6 md:py-8 lg:py-10 xl:py-12 !max-w-full  border-b border-stone-800">
                   <span className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl group-hover/link-item:pl-4 md:group-hover/link-item:pl-12 transition-all duration-300">{label}</span>
                   <svg
@@ -136,8 +136,8 @@ const Header: FC = () => {
             ))}
         </nav>
       </div>
-      <div className="fixed top-0 left-0 w-full backdrop-blur-md mix-blend-difference text-white">
-        <div className="container !max-w-full">
+    <div className="fixed top-0 left-0 w-full z-50 backdrop-blur-md mix-blend-difference text-white">
+      <div className="container !max-w-full">
           <div className="flex justify-between items-center h-20 ">
             <div>
               <a href="#">
@@ -149,8 +149,8 @@ const Header: FC = () => {
           </div>
         </div>
       </div>
-      <div className="fixed top-0 left-0 w-full">
-        <div className="container !max-w-full">
+    <div className="fixed top-0 left-0 w-full z-50">
+      <div className="container !max-w-full">
           <div className="flex justify-end items-center h-20 ">
             <div className="flex items-center justify-center gap-4">
               <div

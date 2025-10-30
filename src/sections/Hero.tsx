@@ -1,25 +1,96 @@
-import { FC } from "react";
+"use client";
+import { FC, useEffect } from "react";
 /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 import heroImage from "@/assets/images/hero-image.jpg";
 import Image from "next/image";
 import Button from "@/components/Button";
+import SplitType from "split-type";
+import { motion, useAnimate } from "motion/react";
+import { stagger } from "motion";
 
 const Hero: FC = () => {
+  const [heroH1Scope, heroH1Animate] = useAnimate();
+
+  useEffect(() => {
+    new SplitType(heroH1Scope.current, {
+      types: "lines,words",
+      tagName: "span",
+    });
+
+    heroH1Animate(
+      heroH1Scope.current.querySelectorAll(".word"),
+      { transform: "translateY(0)" },
+      { duration: 0.5, delay: stagger(0.2) }
+    );
+  }, []);
+
   return (
     <section>
       <div className="grid md:grid-cols-12 md:h-screen items-stretch">
         <div className="md:col-span-7 flex flex-col justify-center">
           <div className="container !max-w-full">
-            <h1 className="text-5xl md:text-6xl lg-text-7xl xl:text-8xl mt-40 md:mt-0">
+            <motion.h1
+              ref={heroH1Scope}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="relative -z-10 text-5xl md:text-6xl lg-text-7xl xl:text-8xl mt-40 md:mt-0"
+            >
               {/* Crafting experiences that resonate, not just function */}
               {/* Crafting digital experiences through code and creative design */}
               {/* Creating experiences that matter through thoughtful code */}
               Creating meaningful experiences through crafted code
-            </h1>
+            </motion.h1>
             <div className="flex flex-col md:flex-row md:items-center items-start mt-10 gap-6">
               <Button
-              className="hidden md:inline-flex"
+                className="hidden md:inline-flex"
                 varient="secondary"
+                iconAfter={
+          <div className="overflow-hidden size-6 relative z-0">
+            <div className="size-6 relative z-0 flex items-center justify-center group-hover/button:translate-y-0 -translate-y-6 transition-all duration-300">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth="1.5"
+                        stroke="currentColor"
+                        className="size-5"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="m4.5 5.25 7.5 7.5 7.5-7.5m-15 6 7.5 7.5 7.5-7.5"
+                        />
+                      </svg>
+                    </div>
+                    <div className="size-6 relative z-0 flex items-center justify-center group-hover/button:translate-y-0 -translate-y-6 transition-all duration-300">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth="1.5"
+                        stroke="currentColor"
+                        className="size-5"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="m4.5 5.25 7.5 7.5 7.5-7.5m-15 6 7.5 7.5 7.5-7.5"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                }
+              >
+                View my work
+              </Button>
+              <a href="/resume.pdf" download>
+                <Button varient="primary" className="inline-flex md:hidden">
+                  Download CV
+                </Button>
+              </a>
+              <Button
+                className="inline-flex md:hidden"
+                varient="text"
                 iconAfter={
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -37,34 +108,22 @@ const Hero: FC = () => {
                   </svg>
                 }
               >
-                View my work
+                Let&apos;s Talk
               </Button>
-              <a href="/resume.pdf" download>
-                <Button varient="primary" className="inline-flex md:hidden">
-                  Download CV
-                </Button>
-              </a>
-              <Button className="inline-flex md:hidden" varient="text" iconAfter={<svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="1.5"
-                    stroke="currentColor"
-                    className="size-5"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="m4.5 5.25 7.5 7.5 7.5-7.5m-15 6 7.5 7.5 7.5-7.5"
-                    />
-                  </svg>}>Let&apos;s Talk</Button>
-              <Button className="hidden md:inline-flex" varient="text">Let&apos;s Talk</Button>
+              <Button className="hidden md:inline-flex" varient="text">
+                Let&apos;s Talk
+              </Button>
             </div>
           </div>
         </div>
         <div className="md:col-span-5">
           <div className="mt-20 md:mt-0 md:h-full xl:h-screen">
-            <Image src={heroImage} alt="My Image" priority className="size-full object-cover"/>
+            <Image
+              src={heroImage}
+              alt="My Image"
+              priority
+              className="size-full object-cover"
+            />
           </div>
         </div>
       </div>
