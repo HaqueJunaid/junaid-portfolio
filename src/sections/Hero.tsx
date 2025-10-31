@@ -29,7 +29,7 @@ const Hero: FC = () => {
     heroH1Animate(
       heroH1Scope.current.querySelectorAll(".word"),
       { transform: "translateY(0)" },
-      { duration: 0.5, delay: stagger(0.2) }
+      { duration: 0.5, delay: stagger(0.15) }
     );
     
   }, []);
