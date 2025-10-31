@@ -1,16 +1,22 @@
 "use client";
-import { FC, useEffect } from "react";
+import { FC, useEffect, useRef } from "react";
 /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 import heroImage from "@/assets/images/hero-image.jpg";
 import Image from "next/image";
 import Button from "@/components/Button";
 import SplitType from "split-type";
-import { motion, useAnimate } from "motion/react";
+import { motion, useAnimate, useScroll, useTransform } from "motion/react";
 import { stagger } from "motion";
 
 const Hero: FC = () => {
   const [heroH1Scope, heroH1Animate] = useAnimate();
   const [imageScope, imageAnimate] = useAnimate();
+  const scrollDiv = useRef<HTMLDivElement>(null);
+  const {scrollYProgress} = useScroll({
+    target: scrollDiv,
+    offset: ['start end', 'end end']
+  })
+  const portraitWidth = useTransform(scrollYProgress, [0, 1], ['100%', '240%']);
 
   useEffect(() => {
     new SplitType(heroH1Scope.current, {
@@ -30,7 +36,7 @@ const Hero: FC = () => {
 
   return (
     <section>
-      <div className="grid md:grid-cols-12 md:h-screen items-stretch">
+      <div className="grid md:grid-cols-12 md:h-screen items-stretch sticky top-0">
         <div className="md:col-span-7 flex flex-col justify-center">
           <div className="container !max-w-full">
             <motion.h1
@@ -146,7 +152,7 @@ const Hero: FC = () => {
                 </svg>
                 }
               >
-                Let&apos;s Talk
+                View my works
               </Button>
               </motion.div>
               <motion.div
@@ -164,17 +170,21 @@ const Hero: FC = () => {
             </motion.div>
           </div>
         </div>
-        <div className="md:col-span-5">
-          <motion.div ref={imageScope} initial={{ opacity: 0, translateY: -25 }} className="mt-20 md:mt-0 md:h-full xl:h-screen">
+        <div className="md:col-span-5 relative">
+          <motion.div ref={imageScope} initial={{ opacity: 0, translateY: -25 }} style={{width: portraitWidth}} className="mt-20 md:mt-0 md:size-full xl:size-full md:absolute md:right-0  max-md:!w-full">
             <Image
               src={heroImage}
               alt="My Image"
               priority
               className="size-full object-cover"
+              style={{
+                objectPosition: "50% 20%"
+              }}
             />
           </motion.div>
         </div>
       </div>
+      <div ref={scrollDiv} className="w-full md:h-[200vh]"></div>
     </section>
   );
 };
