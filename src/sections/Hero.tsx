@@ -1,12 +1,12 @@
 "use client";
 import { FC, useEffect, useRef } from "react";
-/* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 import heroImage from "@/assets/images/hero-image.jpg";
 import Image from "next/image";
 import Button from "@/components/Button";
 import { motion, useAnimate, useScroll, useTransform } from "motion/react";
 import useTextReavelAniation from "@/hooks/useTextReavel";
 
+/* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 const Hero: FC = () => {
   const {scope: heroH1Scope, enterenceAnimation: heroH1Animate} = useTextReavelAniation();
   const [imageScope, imageAnimate] = useAnimate();
