@@ -35,7 +35,7 @@ const Testimonial = (
           exitCiteAnimation();
         })
     }
-  }, [quoteScope, quoteEnterenceAnimate, citeScope, citeEnterenceAnimate, exitCiteAnimation, exitQutoeAnimation])
+  }, [isPresent, safeToRemove, quoteScope, quoteEnterenceAnimate, citeScope, citeEnterenceAnimate, exitCiteAnimation, exitQutoeAnimation])
 
   return (
     <div

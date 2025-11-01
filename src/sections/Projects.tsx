@@ -1,7 +1,6 @@
 import { FC } from "react";
 import placeholder from "@/assets/images/gato-papu.gif";
 import Image from "next/image";
-import { div } from "motion/react-client";
 
 /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 const projects = [
