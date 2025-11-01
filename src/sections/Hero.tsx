@@ -4,12 +4,11 @@ import { FC, useEffect, useRef } from "react";
 import heroImage from "@/assets/images/hero-image.jpg";
 import Image from "next/image";
 import Button from "@/components/Button";
-import SplitType from "split-type";
 import { motion, useAnimate, useScroll, useTransform } from "motion/react";
-import { stagger } from "motion";
+import useTextReavelAniation from "@/hooks/useTextReavel";
 
 const Hero: FC = () => {
-  const [heroH1Scope, heroH1Animate] = useAnimate();
+  const {scope: heroH1Scope, enterenceAnimation: heroH1Animate} = useTextReavelAniation();
   const [imageScope, imageAnimate] = useAnimate();
   const scrollDiv = useRef<HTMLDivElement>(null);
   const {scrollYProgress} = useScroll({
@@ -19,20 +18,11 @@ const Hero: FC = () => {
   const portraitWidth = useTransform(scrollYProgress, [0, 1], ['100%', '240%']);
 
   useEffect(() => {
-    new SplitType(heroH1Scope.current, {
-      types: "lines,words",
-      tagName: "span",
-    });
 
     imageAnimate(imageScope.current, { opacity: 1, translateY: 0 }, { duration: 0.7 })
-
-    heroH1Animate(
-      heroH1Scope.current.querySelectorAll(".word"),
-      { transform: "translateY(0)" },
-      { duration: 0.5, delay: stagger(0.15) }
-    );
+    heroH1Animate()
     
-  }, []);
+  }, [heroH1Scope, heroH1Animate, imageScope, imageAnimate]);
 
   return (
     <section>

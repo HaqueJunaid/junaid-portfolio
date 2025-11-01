@@ -1,25 +1,16 @@
 'use client'
 import { FC, useEffect } from "react";
-import {motion, useAnimate, inView} from 'motion/react';
-import SplitType from "split-type";
-import { stagger } from "motion";
+import {motion, inView} from 'motion/react';
+import useTextReavelAniation from "@/hooks/useTextReavel";
 
 const Intro: FC = () => {
-  const [scope, animate] = useAnimate();
-
-  useEffect(() => {
-    new SplitType(scope.current, {
-      types: 'lines,words',
-      tagName: 'span'
-    })
-  }, [])
+  const {scope, enterenceAnimation} = useTextReavelAniation();
 
   useEffect(() => {
     inView(scope.current, () => {
-      animate(scope.current.querySelectorAll("span"), 
-      { transform: "translateY(0)" }, { duration: 0.5, delay: stagger(0.15) })
+      enterenceAnimation();
     })
-  }, [])
+  }, [scope, enterenceAnimation])
 
   return <section className="py-24 md:py-32 lg:py-40 xl:py-44 mt-12 md:mt-16 lg:mt-20 xl:mt-24">
     <div className="container">
