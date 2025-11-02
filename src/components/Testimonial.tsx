@@ -46,7 +46,7 @@ const Testimonial = (
       {...rest}
     >
       <div className="aspect-square md:col-span-2 md:aspect-[9/12] relative">
-      <motion.div initial={{width: "100%"}} animate={{width: "0%"}} exit={{width: '100%'}} transition={{duration: 0.6, ease: "easeInOut"}} className="h-full bg-stone-950 absolute"></motion.div>
+      <motion.div initial={{width: "100%"}} animate={{width: "0%"}} exit={{width: '100%'}} transition={{duration: 0.6}} className="h-full bg-stone-950 absolute"></motion.div>
         <Image
           src={image}
           alt={image + " " + name}
