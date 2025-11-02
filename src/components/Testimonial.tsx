@@ -5,6 +5,7 @@ import React, { HTMLAttributes, useEffect } from "react";
 import { twMerge } from "tailwind-merge";
 import { usePresence } from "motion/react";
 import {motion} from 'motion/react';
+import { easeInOut } from "motion";
 
 const Testimonial = (
   props: {
@@ -45,13 +46,14 @@ const Testimonial = (
       )}
       {...rest}
     >
-      <motion.div initial={{opacity: 0, filter: 'blur(10px)'}} animate={{opacity: 1, filter: 'blur(0)'}} transition={{duration: 0.5}} className="aspect-square md:col-span-2 md:aspect-[9/12]">
+      <div className="aspect-square md:col-span-2 md:aspect-[9/12] relative">
+      <motion.div initial={{width: "100%"}} animate={{width: "0%"}} exit={{width: '100%'}} transition={{duration: 0.6, ease: "easeInOut"}} className="h-full bg-stone-950 absolute"></motion.div>
         <Image
           src={image}
           alt={image + " " + name}
           className="size-full object-cover"
         />
-      </motion.div>
+      </div>
       <blockquote className="md:col-span-3">
         <div ref={quoteScope} className="text-3xl md:text-5xl lg:text-6xl xl:text-8xl mt-8 md:mt-0">
           <span>&ldquo;</span>
