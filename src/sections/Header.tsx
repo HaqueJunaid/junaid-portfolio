@@ -4,7 +4,6 @@ import Button from "@/components/Button";
 import { motion, useAnimate } from "motion/react";
 import { useState, useEffect } from "react";
 
-/* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 const navItems = [
   {
     label: "About",

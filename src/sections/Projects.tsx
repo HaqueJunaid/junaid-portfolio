@@ -2,7 +2,6 @@ import { FC } from "react";
 import placeholder from "@/assets/images/gato-papu.gif";
 import Image from "next/image";
 
-/* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 const projects = [
   {
     name: "Yet to select",
