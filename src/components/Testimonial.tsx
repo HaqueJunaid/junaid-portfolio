@@ -5,7 +5,6 @@ import React, { HTMLAttributes, useEffect } from "react";
 import { twMerge } from "tailwind-merge";
 import { usePresence } from "motion/react";
 import {motion} from 'motion/react';
-import { easeInOut } from "motion";
 
 const Testimonial = (
   props: {
