@@ -7,7 +7,6 @@ import image1 from '@/assets/images/cat-cat-meme.gif';
 import image2 from '@/assets/images/176171-1.jpg';
 import image3 from '@/assets/images/Cute-Cat-meme-4xgqu.jpg';
 
-/* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 const testimonials = [
   {
     name: "Mr Boots",
