@@ -13,7 +13,7 @@ const projects = [
   {
     name: "Nooter (Advance notes app)",
     image: Nooter,
-    url: "https//nooter.vercel.app"
+    url: "https://nooter.vercel.app"
   },
   {
     name: "Yet to select",
