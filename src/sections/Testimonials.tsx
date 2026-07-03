@@ -62,7 +62,7 @@ const Testimonials: FC = () => {
   }
 
   return (
-    <section className="py-24 md:py-32 lg:py-46 xl:py-48">
+    <section id="testimonials" className="py-24 md:py-32 lg:py-46 xl:py-48">
       <h2 ref={reference} className="text-4xl md:text-7xl lg:text-8xl xl:text-9xl flex flex-col overflow-hidden">
         <motion.span style={{x: topMove}} className="whitespace-nowrap">Some nice words from my past clients</motion.span>
         <motion.span style={{x: bottomMove}} className="whitespace-nowrap self-end text-red-orange-500">Some nice words from my past clients</motion.span>

@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  scroll-behavior: smooth;
+}
+
+section,
+footer,
+header {
+  scroll-margin-top: 5rem;
+}
+
 .line {
     @apply overflow-hidden
 }

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+// @ts-ignore
 import "./globals.css";
 import { Archivo } from "next/font/google";
 import LenisScrollProvider from "./provider/lenis-provider";
@@ -11,8 +12,8 @@ const archivo = Archivo({
 })
 
 export const metadata: Metadata = {
-  title: "JunaidFolio",
-  description: "Junaid's Portfolio",
+  title: "Junaid Haque — Fullstack DevOps Engineer",
+  description: "Fullstack developer and DevOps engineer building scalable web platforms, CI/CD pipelines, and cloud infrastructure.",
 };
 
 export default function RootLayout({
@@ -23,9 +24,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`antialiased text-stone-900 bg-stone-100 ${archivo.variable} font-sans`}>
-        <LenisScrollProvider>
+        {/* <LenisScrollProvider> */}
           {children}
-        </LenisScrollProvider>
+        {/* </LenisScrollProvider> */}
       </body>
     </html>
   );

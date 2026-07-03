@@ -1,8 +1,8 @@
 "use client";
-import { FC } from "react";
+import React, { FC, useState, useEffect } from "react";
 import Button from "@/components/Button";
-import { motion, useAnimate } from "motion/react";
-import { useState, useEffect } from "react";
+import { motion, useAnimate, AnimatePresence } from "motion/react";
+import { twMerge } from "tailwind-merge";
 
 const navItems = [
   {
@@ -31,7 +31,6 @@ const Header: FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [topLineScope, topLineAnimate] = useAnimate();
   const [bottomLineScope, bottomLineAnimate] = useAnimate();
-  const [navScope, navAnimate] = useAnimate();
 
   useEffect(() => {
     if (isOpen) {
@@ -93,68 +92,191 @@ const Header: FC = () => {
         ],
       ]);
     }
-  }, [
-    isOpen,
-    topLineScope,
-    bottomLineScope,
-    topLineAnimate,
-    bottomLineAnimate,
-    navScope,
-    navAnimate,
-  ]);
+  }, [isOpen, topLineScope, bottomLineScope, topLineAnimate, bottomLineAnimate]);
+
+  const handleNavigation = (event: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    event.preventDefault();
+    const target = href === "#" ? "#top" : href;
+    const element = document.querySelector(target);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    setIsOpen(false);
+  };
 
   return (
-    <header>
-      <div
-        ref={navScope}
-        className={`fixed top-0 left-0 w-full z-50 ${isOpen ? "h-screen pointer-events-auto" : "h-0 pointer-events-none"} duration overflow-hidden bg-stone-950 transition-all duration-300`}
-        aria-hidden={!isOpen}
-      >
-        <nav className="relative mt-20 flex flex-col">
-            {navItems.map(({ label, href }) => (
-              <a key={label + href} href={href} className="!max-w-full text-stone-200 group/link-item relative" onClick={() => setIsOpen(false)}>
-                <div className="absolute w-full h-0 bg-stone-800 group-hover/link-item:h-full z-0 transition-all duration-300 bottom-0"></div>
-                <div className="container relative flex justify-between items-center py-6 md:py-8 lg:py-10 xl:py-12 !max-w-full  border-b border-stone-800">
-                  <span className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl group-hover/link-item:pl-4 md:group-hover/link-item:pl-12 transition-all duration-300">{label}</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="1.5"
-                    stroke="currentColor"
-                    className="size-5 md:size-6 lg:size-7"
+    <header id="top">
+      {/* Menu Drawer Overlay */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0 }}
+            animate={{ height: "100vh" }}
+            exit={{ height: 0 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed top-0 left-0 w-full z-50 overflow-hidden bg-stone-950 flex flex-col justify-between"
+          >
+            <div className="container h-full flex flex-col justify-between py-12 md:py-20 lg:py-24">
+              <div className="grid md:grid-cols-12 gap-8 md:gap-12 items-center h-full pt-12 md:pt-16">
+                {/* Left Column - Meta details (desktop only) */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -10 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                  className="md:col-span-5 flex flex-col justify-between h-[80%] max-md:hidden border-r border-stone-800/80 pr-12 lg:pr-20"
+                >
+                  <div className="flex flex-col gap-6">
+                    <span className="text-xs uppercase tracking-wider font-semibold text-stone-500">
+                      Navigation
+                    </span>
+                    <p className="text-lg font-light leading-relaxed text-stone-300">
+                      Fullstack Developer & DevOps Engineer focusing on scalable web platforms, CI/CD, and cloud infrastructure.
+                    </p>
+                  </div>
+
+                  <div className="flex flex-col gap-6">
+                    <div className="flex flex-col gap-2">
+                      <span className="text-xs uppercase tracking-wider font-semibold text-stone-500">
+                        Contact Details
+                      </span>
+                      <a
+                        href="mailto:junaid@gmail.com"
+                        className="text-stone-300 hover:text-red-orange-500 transition-colors text-lg font-light"
+                      >
+                        junaid@gmail.com
+                      </a>
+                    </div>
+                    <div className="flex gap-6">
+                      <a
+                        href="https://github.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-stone-400 hover:text-red-orange-500 transition-colors uppercase tracking-wider text-xs font-medium"
+                      >
+                        GitHub
+                      </a>
+                      <a
+                        href="https://linkedin.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-stone-400 hover:text-red-orange-500 transition-colors uppercase tracking-wider text-xs font-medium"
+                      >
+                        LinkedIn
+                      </a>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Right Column - Navigation Links */}
+                <div className="md:col-span-7 flex flex-col justify-center h-full">
+                  <motion.nav
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    variants={{
+                      hidden: { opacity: 0 },
+                      visible: {
+                        opacity: 1,
+                        transition: {
+                          staggerChildren: 0.08,
+                          delayChildren: 0.15,
+                        },
+                      },
+                      exit: {
+                        opacity: 0,
+                        transition: {
+                          staggerChildren: 0.04,
+                          staggerDirection: -1,
+                        },
+                      },
+                    }}
+                    className="flex flex-col gap-4 md:gap-6"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
-                    />
-                  </svg>
+                    {navItems.map(({ label, href }, index) => (
+                      <div key={label + href} className="overflow-hidden py-1">
+                        <motion.div
+                          variants={{
+                            hidden: { y: "100%" },
+                            visible: {
+                              y: 0,
+                              transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+                            },
+                            exit: {
+                              y: "100%",
+                              transition: { duration: 0.3 },
+                            },
+                          }}
+                        >
+                          <a
+                            href={href}
+                            className="flex items-center text-stone-200 hover:text-red-orange-500 group transition-colors duration-300 py-2"
+                            onClick={(event) => handleNavigation(event, href)}
+                          >
+                            <span className="text-red-orange-500 font-light text-sm md:text-base mr-4 md:mr-6">
+                              0{index + 1}
+                            </span>
+                            <span className="text-3xl md:text-5xl lg:text-6xl font-normal group-hover:translate-x-3 transition-transform duration-300">
+                              {label}
+                            </span>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              strokeWidth="1.5"
+                              stroke="currentColor"
+                              className="size-5 md:size-6 lg:size-7 ml-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 text-red-orange-500"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
+                              />
+                            </svg>
+                          </a>
+                        </motion.div>
+                      </div>
+                    ))}
+                  </motion.nav>
                 </div>
-              </a>
-            ))}
-        </nav>
-      </div>
-    <div className="fixed top-0 left-0 w-full z-50 backdrop-blur-md mix-blend-difference text-white">
-      <div className="container !max-w-full">
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Floating Header Bar */}
+      <div className="fixed top-0 left-0 w-full z-50 backdrop-blur-md mix-blend-difference text-white">
+        <div className="container !max-w-full">
           <div className="flex justify-between items-center h-20 ">
             <div>
               <a href="#">
-                <span className="text-xl uppercase font-bold">
-                  Junaid&nbsp; Haque
-                </span>
+                <div>
+                  <span className="text-xl uppercase font-bold">Junaid&nbsp; Haque</span>
+                  <div className="text-sm font-light opacity-60">
+                    Fullstack & DevOps Engineer <span className="hidden md:inline-block"> — Infrastructure · CI/CD · Cloud </span>
+                  </div>
+                </div>
               </a>
             </div>
           </div>
         </div>
       </div>
-    <div className="fixed top-0 left-0 w-full z-50">
-      <div className="container !max-w-full">
+
+      {/* Burger Menu Button & CV Download */}
+      <div className="fixed top-0 left-0 w-full z-50">
+        <div className="container !max-w-full">
           <div className="flex justify-end items-center h-20 ">
             <div className="flex items-center justify-center md:gap-4">
-              <div
-                className="size-11 border border-stone-400 bg-stone-200 rounded-full inline-flex items-center justify-center"
+              <button
+                className={twMerge(
+                  "size-11 border rounded-full inline-flex items-center justify-center transition-all duration-300 focus:outline-none cursor-pointer relative z-[60] shadow-sm",
+                  isOpen
+                    ? "bg-white border-white text-stone-950 hover:scale-105"
+                    : "bg-stone-200 border-stone-400 text-stone-900 hover:bg-stone-300 hover:scale-105"
+                )}
                 onClick={() => setIsOpen(!isOpen)}
+                aria-label={isOpen ? "Close Menu" : "Open Menu"}
               >
                 <svg
                   width="24"
@@ -176,7 +298,6 @@ const Header: FC = () => {
                     fill="currentColor"
                     style={{
                       transformOrigin: "12px 8px",
-                      // transform: "translateY(4px) rotate(45deg)"
                     }}
                   />
                   <motion.rect
@@ -192,12 +313,11 @@ const Header: FC = () => {
                     fill="currentColor"
                     style={{
                       transformOrigin: "12px 16px",
-                      // transform: "translateY(-4px) rotate(-45deg)"
                     }}
                   />
                 </svg>
-              </div>
-              <a href="/resume.pdf" download>
+              </button>
+              <a href="/resume.pdf" download className="relative z-50">
                 <Button varient="primary" className="hidden md:inline-flex">
                   Download CV
                 </Button>
