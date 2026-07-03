@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
-// @ts-ignore
 import "./globals.css";
 import { Archivo } from "next/font/google";
-import LenisScrollProvider from "./provider/lenis-provider";
 
 const archivo = Archivo({
   display: "swap",
