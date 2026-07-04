@@ -15,10 +15,10 @@ const Skills: FC = () => {
 
         {/* DevOps Section */}
         <div className="mt-16 md:mt-20 lg:mt-24">
-          <div className="border-b border-stone-300 pb-4 md:pb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div className="border-b border-stone-300 dark:border-stone-700 pb-4 md:pb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
             <h3 className="flex items-center gap-2.5 text-2xl md:text-3xl lg:text-4xl font-normal text-stone-900">
               <span className="block bg-red-orange-500 rounded-full size-3"></span>
-              <span>DevOps & Infrastructure</span>
+              <span className="dark:text-stone-100">DevOps & Infrastructure</span>
             </h3>
             <p className="text-stone-500 text-sm md:text-base font-light max-w-md">
               Deploying automated CI/CD pipelines, containerized architectures, and scaling cloud infrastructure.
@@ -45,10 +45,10 @@ const Skills: FC = () => {
 
         {/* Backend Section */}
         <div className="mt-12 md:mt-16 lg:mt-20">
-          <div className="border-b border-stone-300 pb-4 md:pb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div className="border-b border-stone-300 dark:border-stone-700 pb-4 md:pb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
             <h3 className="flex items-center gap-2.5 text-2xl md:text-3xl lg:text-4xl font-normal text-stone-900">
               <span className="block bg-red-orange-500 rounded-full size-3"></span>
-              <span>Backend & APIs</span>
+              <span className="dark:text-stone-100">Backend & APIs</span>
             </h3>
             <p className="text-stone-500 text-sm md:text-base font-light max-w-md">
               Developing robust, high-performance backends, RESTful/GraphQL APIs, and managing databases.
@@ -75,10 +75,10 @@ const Skills: FC = () => {
 
         {/* Frontend Section */}
         <div className="mt-12 md:mt-16 lg:mt-20">
-          <div className="border-b border-stone-300 pb-4 md:pb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div className="border-b border-stone-300 dark:border-stone-700 pb-4 md:pb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
             <h3 className="flex items-center gap-2.5 text-2xl md:text-3xl lg:text-4xl font-normal text-stone-900">
               <span className="block bg-red-orange-500 rounded-full size-3"></span>
-              <span>Frontend & UX</span>
+              <span className="dark:text-stone-100">Frontend & UX</span>
             </h3>
             <p className="text-stone-500 text-sm md:text-base font-light max-w-md">
               Building responsive web applications with smooth interactive animations and modern UI frameworks.

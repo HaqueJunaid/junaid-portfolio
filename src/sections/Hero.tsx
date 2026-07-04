@@ -30,10 +30,10 @@ const Hero: FC = () => {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="inline-flex items-center gap-2.5 px-3 py-1.5 border border-stone-300 rounded-full text-xs font-semibold uppercase tracking-wider text-stone-600 mb-6 bg-stone-200/30 w-fit"
+              className="inline-flex items-center gap-2.5 px-3 py-1.5 border border-stone-300 dark:border-stone-800 rounded-full text-xs font-semibold uppercase tracking-wider text-stone-600 dark:text-stone-300 mb-3.5 mb-6 bg-stone-200/30 dark:bg-stone-900/30 w-fit"
             >
               <span className="size-2 rounded-full bg-red-orange-500 animate-pulse"></span>
-              <span>Available for freelance & full-time roles</span>
+              <span className="text-[10px]">Available for freelance & full-time roles</span>
             </motion.div>
 
             {/* Headline */}
@@ -41,7 +41,7 @@ const Hero: FC = () => {
               ref={heroH1Scope}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="relative -z-10 text-5xl md:text-6xl lg:text-7xl xl:text-8xl mt-4 md:mt-0 font-normal leading-tight tracking-tight text-stone-900"
+              className="relative -z-10 text-4xl md:text-5xl lg:text-7xl xl:text-8xl mt-4 md:mt-0 font-normal leading-tight tracking-tight text-stone-900 dark:text-stone-100"
             >
               Full‑Stack & DevOps Engineer — building resilient, scalable web platforms
             </motion.h1>
@@ -51,7 +51,7 @@ const Hero: FC = () => {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.0 }}
-              className="text-stone-600 text-lg md:text-xl font-light leading-relaxed mt-6 max-w-xl"
+              className="text-stone-600 dark:text-stone-400 text-md md:text-lg font-light leading-relaxed mt-6 max-w-xl"
             >
               Crafting seamless user experiences and robust cloud infrastructure to help businesses scale and deliver top-tier digital products.
             </motion.p>
@@ -184,7 +184,7 @@ const Hero: FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
             style={{ width: portraitWidth }}
-            className="mt-20 md:mt-0 md:size-full xl:size-full md:absolute md:right-0 max-md:!w-full"
+            className="mt-20 md:mt-0 md:size-full xl:size-full md:absolute md:right-0 max-md:!w-full aspect-[3/4] md:aspect-auto"
           >
             <Image
               src={heroImage4}
@@ -192,7 +192,7 @@ const Hero: FC = () => {
               priority
               className="size-full object-cover object-center"
               style={{
-                objectPosition: "50% 50%",
+                objectPosition: "38% 50%",
               }}
             />
           </motion.div>

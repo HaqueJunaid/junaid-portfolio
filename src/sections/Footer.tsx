@@ -125,10 +125,10 @@ const Footer: FC = () => {
                   Get in touch
                 </span>
                 <a
-                  href="mailto:junaid@gmail.com"
+                  href="mailto:junaidcodes404@gmail.com"
                   className="text-xl md:text-2xl font-light text-stone-300 hover:text-red-orange-500 transition-colors duration-300 w-fit"
                 >
-                  junaid@gmail.com
+                  junaidcodes404@gmail.com
                 </a>
               </div>
             </div>

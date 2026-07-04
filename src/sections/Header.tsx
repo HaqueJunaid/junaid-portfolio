@@ -3,6 +3,7 @@ import React, { FC, useState, useEffect } from "react";
 import Button from "@/components/Button";
 import { motion, useAnimate, AnimatePresence } from "motion/react";
 import { twMerge } from "tailwind-merge";
+import { useTheme } from "@/app/provider/theme-provider";
 
 const navItems = [
   {
@@ -31,6 +32,12 @@ const Header: FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [topLineScope, topLineAnimate] = useAnimate();
   const [bottomLineScope, bottomLineAnimate] = useAnimate();
+  const { theme, toggleTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (isOpen) {
@@ -141,10 +148,10 @@ const Header: FC = () => {
                         Contact Details
                       </span>
                       <a
-                        href="mailto:junaid@gmail.com"
+                        href="mailto:junaidcodes404@gmail.com"
                         className="text-stone-300 hover:text-red-orange-500 transition-colors text-lg font-light"
                       >
-                        junaid@gmail.com
+                        junaidcodes404@gmail.com
                       </a>
                     </div>
                     <div className="flex gap-6">
@@ -263,64 +270,106 @@ const Header: FC = () => {
         </div>
       </div>
 
-      {/* Burger Menu Button & CV Download */}
+      {/* Burger Menu Button, Theme Toggle & CV Download */}
       <div className="fixed top-0 left-0 w-full z-50">
         <div className="container !max-w-full">
           <div className="flex justify-end items-center h-20 ">
-            <div className="flex items-center justify-center md:gap-4">
-              <button
-                className={twMerge(
-                  "size-11 border rounded-full inline-flex items-center justify-center transition-all duration-300 focus:outline-none cursor-pointer relative z-[60] shadow-sm",
-                  isOpen
-                    ? "bg-white border-white text-stone-950 hover:scale-105"
-                    : "bg-stone-200 border-stone-400 text-stone-900 hover:bg-stone-300 hover:scale-105"
-                )}
-                onClick={() => setIsOpen(!isOpen)}
-                aria-label={isOpen ? "Close Menu" : "Open Menu"}
-              >
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+            <div className="flex items-center justify-center gap-3 md:gap-4">
+              {/* Theme Toggle Button */}
+                <button
+                  className="size-11 border rounded-full inline-flex items-center justify-center transition-all duration-300 focus:outline-none cursor-pointer relative z-[60] shadow-sm bg-stone-200 border-stone-400 text-stone-900 hover:bg-stone-300 dark:bg-stone-800 dark:border-stone-700 dark:text-stone-100 dark:hover:bg-stone-700"
+                  onClick={toggleTheme}
+                  aria-label="Toggle Theme"
                 >
-                  <motion.rect
-                    initial={{
-                      translateY: 0,
-                      rotate: 0,
-                    }}
-                    ref={topLineScope}
-                    x="3"
-                    y="7"
-                    width="18"
-                    height="2"
-                    fill="currentColor"
-                    style={{
-                      transformOrigin: "12px 8px",
-                    }}
-                  />
-                  <motion.rect
-                    initial={{
-                      translateY: 0,
-                      rotate: 0,
-                    }}
-                    ref={bottomLineScope}
-                    x="3"
-                    y="15"
-                    width="18"
-                    height="2"
-                    fill="currentColor"
-                    style={{
-                      transformOrigin: "12px 16px",
-                    }}
-                  />
-                </svg>
-              </button>
+                  {mounted && theme === "dark" ? (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1.5"
+                      stroke="currentColor"
+                      className="size-5 rotate-180 transition-transform duration-500"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M12 3v2.25m0 13.5V21M5.22 5.22l1.591 1.591m10.378 10.378 1.591 1.591M12 7.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9ZM4.5 12H3m18 0h-1.5M5.22 18.78l1.591-1.591m10.378-10.378 1.591-1.591"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1.5"
+                      stroke="currentColor"
+                      className="size-5 rotate-0 transition-transform duration-500"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
+                      />
+                    </svg>
+                  )}
+                </button>
+
+              {/* Burger Menu Button */}
+                <button
+                  className={twMerge(
+                    "size-11 border rounded-full inline-flex items-center justify-center transition-all duration-300 focus:outline-none cursor-pointer relative z-[60] shadow-sm",
+                    isOpen
+                      ? "bg-white border-white text-stone-950"
+                      : "bg-stone-200 border-stone-400 text-stone-900 hover:bg-stone-300 dark:bg-stone-800 dark:border-stone-700 dark:text-stone-100 dark:hover:bg-stone-700"
+                  )}
+                  onClick={() => setIsOpen(!isOpen)}
+                  aria-label={isOpen ? "Close Menu" : "Open Menu"}
+                >
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <motion.rect
+                      initial={{
+                        translateY: 0,
+                        rotate: 0,
+                      }}
+                      ref={topLineScope}
+                      x="3"
+                      y="7"
+                      width="18"
+                      height="2"
+                      fill="currentColor"
+                      style={{
+                        transformOrigin: "12px 8px",
+                      }}
+                    />
+                    <motion.rect
+                      initial={{
+                        translateY: 0,
+                        rotate: 0,
+                      }}
+                      ref={bottomLineScope}
+                      x="3"
+                      y="15"
+                      width="18"
+                      height="2"
+                      fill="currentColor"
+                      style={{
+                        transformOrigin: "12px 16px",
+                      }}
+                    />
+                  </svg>
+                </button>
+
+              {/* Download CV */}
               <a href="/resume.pdf" download className="relative z-50">
-                <Button varient="primary" className="hidden md:inline-flex">
-                  Download CV
-                </Button>
+                  <Button varient="primary" className="hidden md:inline-flex">
+                    Download CV
+                  </Button>
               </a>
             </div>
           </div>

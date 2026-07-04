@@ -75,7 +75,7 @@ const Projects: FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               key={proj.name + "-mobile"}
-              className="flex flex-col bg-white border border-stone-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300"
+              className="flex flex-col bg-white border border-stone-200 dark:bg-stone-900 dark:border-stone-800 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300"
             >
               <div className="aspect-video w-full overflow-hidden relative">
                 <Image
@@ -86,7 +86,7 @@ const Projects: FC = () => {
               </div>
               <div className="p-6 flex flex-col justify-between flex-grow">
                 <div>
-                  <h3 className="text-2xl font-normal text-stone-900">{proj.name}</h3>
+                  <h3 className="text-2xl font-normal text-stone-900 dark:text-stone-100">{proj.name}</h3>
                   <p className="text-stone-500 text-sm font-light mt-2 leading-relaxed">
                     {proj.description}
                   </p>
@@ -94,18 +94,18 @@ const Projects: FC = () => {
                     {proj.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-2 py-0.5 border border-stone-300 rounded-md text-xs text-stone-500 font-light"
+                        className="px-2 py-0.5 border border-stone-300 dark:border-stone-700 rounded-md text-xs text-stone-500 dark:text-stone-400 font-light"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
                 </div>
-                <div className="flex items-center justify-between mt-6 pt-4 border-t border-stone-100">
+                <div className="flex items-center justify-between mt-6 pt-4 border-t border-stone-100 dark:border-stone-800">
                   <span className="text-red-orange-500 text-sm font-medium uppercase tracking-wider">
                     View Project
                   </span>
-                  <div className="size-9 border border-stone-300 rounded-full flex items-center justify-center text-stone-600">
+                  <div className="size-9 border border-stone-300 dark:border-stone-700 rounded-full flex items-center justify-center text-stone-600 dark:text-stone-400">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -176,14 +176,14 @@ const Projects: FC = () => {
               rel="noopener noreferrer"
               key={proj.name}
               onMouseEnter={() => setHoveredIndex(idx)}
-              className="flex py-8 border-t border-stone-300 last:border-b group relative overflow-hidden transition-colors duration-300"
+              className="flex py-8 border-t border-stone-300 dark:border-stone-800 last:border-b group relative overflow-hidden transition-colors duration-300"
             >
               {/* Sliding background hover transition */}
-              <div className="absolute inset-0 bg-stone-200/50 h-0 group-hover:h-full transition-all duration-300 bottom-0 left-0 z-0"></div>
+              <div className="absolute inset-0 bg-stone-200/50 dark:bg-stone-800/50 h-0 group-hover:h-full transition-all duration-300 bottom-0 left-0 z-0"></div>
 
               <div className="w-full relative z-10 flex justify-between items-center px-4">
                 <div className="flex flex-col gap-2">
-                  <h3 className="text-3xl lg:text-4xl text-stone-900 group-hover:text-red-orange-500 group-hover:pl-4 transition-all duration-300 font-normal">
+                  <h3 className="text-3xl lg:text-4xl text-stone-900 dark:text-stone-100 group-hover:text-red-orange-500 group-hover:pl-4 transition-all duration-300 font-normal">
                     {proj.name}
                   </h3>
                   <div className="flex items-center gap-4 text-sm text-stone-500 font-light group-hover:pl-4 transition-all duration-300">
@@ -193,7 +193,7 @@ const Projects: FC = () => {
                       {proj.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="px-2 py-0.5 border border-stone-300 rounded-md text-xs group-hover:border-red-orange-500/30 group-hover:text-red-orange-500 transition-colors duration-300"
+                          className="px-2 py-0.5 border border-stone-300 dark:border-stone-700 rounded-md text-xs group-hover:border-red-orange-500/30 group-hover:text-red-orange-500 transition-colors duration-300"
                         >
                           {tag}
                         </span>
@@ -201,7 +201,7 @@ const Projects: FC = () => {
                     </div>
                   </div>
                 </div>
-                <div className="size-12 border border-stone-400 rounded-full flex items-center justify-center shrink-0 group-hover:border-red-orange-500 group-hover:bg-red-orange-500 group-hover:text-white transition-all duration-300">
+                <div className="size-12 border border-stone-400 dark:border-stone-700 rounded-full flex items-center justify-center shrink-0 group-hover:border-red-orange-500 group-hover:bg-red-orange-500 group-hover:text-white transition-all duration-300">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"

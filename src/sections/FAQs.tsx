@@ -37,7 +37,7 @@ const FAQs: FC = () => {
           {/* Header Column */}
           <div className="lg:col-span-4">
             <h2 className="text-4xl md:text-7xl lg:text-8xl xl:text-9xl">FAQs</h2>
-            <p className="text-stone-600 mt-6 text-lg md:text-xl font-light leading-relaxed">
+            <p className="text-stone-600 dark:text-stone-400 mt-6 text-lg md:text-xl font-light leading-relaxed">
               Have questions? Find answers to frequently asked questions about my process, services, and experience.
             </p>
           </div>
@@ -50,18 +50,18 @@ const FAQs: FC = () => {
                 return (
                   <div
                     key={item.question}
-                    className="border-t border-stone-300 last:border-b transition-colors duration-300"
+                    className="border-t border-stone-300 dark:border-stone-800 last:border-b transition-colors duration-300"
                   >
                     <button
                       className="w-full flex justify-between items-center py-6 md:py-8 text-left group outline-none focus-visible:text-red-orange-500"
                       onClick={() => setSelectedIndex(isOpen ? null : index)}
                     >
-                      <span className="text-xl md:text-2xl lg:text-3xl text-stone-900 group-hover:text-red-orange-500 transition-colors duration-300 pr-8 font-normal">
+                      <span className="text-xl md:text-2xl lg:text-3xl text-stone-900 dark:text-stone-100 group-hover:text-red-orange-500 transition-colors duration-300 pr-8 font-normal">
                         {item.question}
                       </span>
                       <div
                         className={twMerge(
-                          "size-11 border border-stone-400 inline-flex items-center justify-center rounded-full shrink-0 transition-all duration-300",
+                          "size-11 border border-stone-400 dark:border-stone-600 inline-flex items-center justify-center rounded-full shrink-0 transition-all duration-300",
                           isOpen && "bg-red-orange-500 text-stone-100 border-red-orange-500"
                         )}
                       >
@@ -73,14 +73,14 @@ const FAQs: FC = () => {
                           {/* Horizontal Line */}
                           <div
                             className={twMerge(
-                              "absolute w-4 h-0.5 bg-stone-900 rounded-full transition-colors duration-300",
+                              "absolute w-4 h-0.5 bg-stone-900 dark:bg-stone-100 rounded-full transition-colors duration-300",
                               isOpen ? "bg-stone-100" : "group-hover:bg-red-orange-500"
                             )}
                           />
                           {/* Vertical Line */}
                           <div
                             className={twMerge(
-                              "absolute w-0.5 h-4 bg-stone-900 rounded-full transition-colors duration-300",
+                              "absolute w-0.5 h-4 bg-stone-900 dark:bg-stone-100 rounded-full transition-colors duration-300",
                               isOpen ? "bg-stone-100" : "group-hover:bg-red-orange-500"
                             )}
                           />
@@ -100,7 +100,7 @@ const FAQs: FC = () => {
                           transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                           className="overflow-hidden"
                         >
-                          <p className="pb-8 text-stone-600 text-base md:text-lg leading-relaxed lg:w-[90%] pr-4 md:pr-16">
+                          <p className="pb-8 text-stone-600 dark:text-stone-400 text-base md:text-lg leading-relaxed lg:w-[90%] pr-4 md:pr-16">
                             {item.answer}
                           </p>
                         </motion.div>

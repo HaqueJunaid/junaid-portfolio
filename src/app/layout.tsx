@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Archivo } from "next/font/google";
+import { ThemeProvider } from "@/app/provider/theme-provider";
 
 const archivo = Archivo({
   display: "swap",
@@ -21,10 +22,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`antialiased text-stone-900 bg-stone-100 ${archivo.variable} font-sans`}>
-        {/* <LenisScrollProvider> */}
-          {children}
-        {/* </LenisScrollProvider> */}
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+              } else {
+                document.documentElement.classList.remove('dark');
+              }
+            `,
+          }}
+        />
+      </head>
+      <body className={`antialiased text-stone-900 bg-stone-100 dark:text-stone-100 dark:bg-stone-950 transition-colors duration-300 ${archivo.variable} font-sans`}>
+        <ThemeProvider>
+          {/* <LenisScrollProvider> */}
+            {children}
+          {/* </LenisScrollProvider> */}
+        </ThemeProvider>
       </body>
     </html>
   );
