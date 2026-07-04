@@ -189,7 +189,7 @@ const Footer: FC = () => {
             </div>
             {timeString && (
               <div className="flex gap-4 items-center">
-                <span>Dhaka, BD</span>
+                <span>Jamshedpur, India</span>
                 <span className="w-1.5 h-1.5 rounded-full bg-stone-800"></span>
                 <span>{timeString} (GMT+6)</span>
               </div>
